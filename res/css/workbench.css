@@ -1,0 +1,387 @@
+/* ===========================
+   Workbench Layout
+   =========================== */
+
+.workbench {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - var(--nav-height));
+	max-width: none;
+	padding: 0;
+}
+
+.workbenchToolbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px var(--content-padding);
+	border-bottom: 1px solid var(--border);
+	background: var(--surface);
+	flex-shrink: 0;
+}
+
+.workbenchToolbar select {
+	font-family: 'IBMPlex Sans', sans-serif;
+	font-size: 0.85em;
+	padding: 6px 12px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	background: var(--bg);
+	color: var(--text);
+	cursor: pointer;
+	outline: none;
+	transition: border-color var(--transition);
+}
+
+.workbenchToolbar select:hover {
+	border-color: var(--accent);
+}
+
+.workbenchToolbar .btn {
+	font-size: 0.85em;
+	padding: 6px 18px;
+}
+
+.workbenchToolbar .btnLabel {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75em;
+	color: var(--text-muted);
+	margin-left: auto;
+}
+
+/* ===========================
+   Split Panels
+   =========================== */
+
+.workbenchPanels {
+	display: flex;
+	flex: 1;
+	min-height: 0;
+}
+
+.workbenchEditor {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid var(--border);
+	min-width: 0;
+}
+
+/* ===========================
+   Syntax-Highlighted Editor
+   =========================== */
+
+.editorWrap {
+	flex: 1;
+	position: relative;
+	overflow: auto;
+	background: var(--code-bg);
+}
+
+.editorHighlight,
+.editorInput {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.82em;
+	line-height: 1.6;
+	padding: 16px 20px;
+	margin: 0;
+	border: none;
+	white-space: pre;
+	word-wrap: normal;
+	overflow-wrap: normal;
+	tab-size: 4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.editorHighlight {
+	pointer-events: none;
+	z-index: 1;
+	background: transparent;
+	overflow: hidden;
+}
+
+.editorHighlight code {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: transparent;
+	display: block;
+	white-space: pre;
+	overflow: visible;
+}
+
+.editorInput {
+	z-index: 2;
+	color: transparent;
+	caret-color: var(--text);
+	background: transparent;
+	resize: none;
+	outline: none;
+	overflow: auto;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Verifpal syntax colors */
+.vp-keyword   { color: #555f25; font-weight: bold; }
+.vp-literal   { color: #78A960; }
+.vp-builtin   { color: #397300; }
+.vp-comment   { color: #8a8a82; font-style: italic; }
+.vp-arrow     { color: #b08030; font-weight: bold; }
+.vp-principal { color: #4b6ec4; }
+.vp-guard     { color: #9b59b6; }
+.vp-operator  { color: #b08030; }
+.vp-query     { color: #c0392b; }
+.vp-phase     { color: #c0392b; font-weight: bold; }
+
+/* ===========================
+   Results Panel
+   =========================== */
+
+.workbenchResults {
+	flex: 1;
+	overflow-y: auto;
+	padding: 16px 20px;
+	background: var(--bg);
+	min-width: 0;
+}
+
+.resultHeader {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75em;
+	color: var(--text-muted);
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--border);
+}
+
+.resultQuery {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 12px 16px;
+	margin-bottom: 8px;
+	transition: border-color var(--transition);
+}
+
+.resultQuery.resultPass {
+	border-left: 3px solid var(--accent);
+}
+
+.resultQuery.resultFail {
+	border-left: 3px solid var(--red);
+}
+
+.resultQuery .queryText {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.82em;
+	color: var(--text);
+}
+
+.resultQuery .queryStatus {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75em;
+	font-weight: bold;
+	float: right;
+	margin-left: 12px;
+}
+
+.resultQuery .queryStatus.pass { color: var(--accent); }
+.resultQuery .queryStatus.fail { color: var(--red); }
+
+.resultQuery .querySummary {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.72em;
+	color: var(--text-secondary);
+	margin-top: 6px;
+	white-space: pre-wrap;
+	line-height: 1.5;
+}
+
+.resultSummary {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-top: 16px;
+	padding-top: 8px;
+	border-top: 1px solid var(--border);
+}
+
+.resultSummary.allPass { color: var(--accent); }
+.resultSummary.hasFail { color: var(--red); }
+
+.resultMessages {
+	margin-top: 16px;
+	padding-top: 8px;
+	border-top: 1px solid var(--border);
+}
+
+.resultMessages summary {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.72em;
+	color: var(--text-muted);
+	cursor: pointer;
+	user-select: none;
+}
+
+.resultMessages pre {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.7em;
+	line-height: 1.5;
+	color: var(--text-secondary);
+	margin: 8px 0 0 0;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.resultError {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.82em;
+	color: var(--red);
+	background: var(--surface);
+	border: 1px solid var(--red);
+	border-radius: var(--radius);
+	padding: 12px 16px;
+	white-space: pre-wrap;
+}
+
+.resultLoading {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.82em;
+	color: var(--text-muted);
+}
+
+.resultPlaceholder {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.82em;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+/* ===========================
+   Protocol Diagram
+   =========================== */
+
+.diagramWrap {
+	padding: 20px;
+}
+
+.diagramWrap svg {
+	width: 100%;
+	height: auto;
+}
+
+.diagramWrap svg text {
+	font-family: 'IBMPlex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.diagramWrap svg text.principalLabel {
+	font-family: 'IBMPlex Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	fill: var(--text);
+}
+
+.diagramWrap svg line.lifeline {
+	stroke: var(--border);
+	stroke-width: 1;
+	stroke-dasharray: 5 3;
+}
+
+.diagramWrap svg rect.principalBox {
+	fill: var(--accent-light);
+	stroke: var(--accent);
+	stroke-width: 1.5;
+	rx: 5;
+	ry: 5;
+}
+
+.diagramWrap svg line.msgArrow {
+	stroke: var(--text-muted);
+	stroke-width: 1.2;
+}
+
+.diagramWrap svg text.msgLabel {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 11px;
+	fill: var(--text-secondary);
+}
+
+.diagramWrap svg text.noteText {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 10px;
+	fill: var(--text-muted);
+}
+
+.diagramWrap svg rect.noteBox {
+	fill: var(--surface);
+	stroke: var(--border);
+	stroke-width: 1;
+	rx: 3;
+	ry: 3;
+}
+
+.diagramWrap svg line.phaseLine {
+	stroke: var(--red);
+	stroke-width: 1;
+	stroke-dasharray: 4 2;
+}
+
+.diagramWrap svg text.phaseLabel {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 11px;
+	fill: var(--red);
+	font-weight: bold;
+}
+
+.diagramBackBtn {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75em;
+	color: var(--accent);
+	cursor: pointer;
+	border: none;
+	background: none;
+	padding: 0 0 12px 0;
+	text-decoration: underline;
+}
+
+.diagramBackBtn:hover {
+	color: var(--accent-dark);
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+
+@media (max-width: 900px) {
+	.workbenchPanels {
+		flex-direction: column;
+	}
+
+	.workbenchEditor {
+		border-right: none;
+		border-bottom: 1px solid var(--border);
+		min-height: 40vh;
+	}
+
+	.workbenchResults {
+		min-height: 40vh;
+	}
+
+	.workbenchToolbar {
+		flex-wrap: wrap;
+	}
+
+	.workbenchToolbar .btnLabel {
+		margin-left: 0;
+		width: 100%;
+		text-align: center;
+	}
+}

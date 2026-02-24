@@ -1,0 +1,117 @@
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Regular.woff2') format('woff2'),
+		url("JetBrainsMono-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Italic.woff2') format('woff2'),
+		url("JetBrainsMono-Italic.woff") format("woff");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Medium.woff2') format('woff2'),
+		url("JetBrainsMono-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Medium-Italic.woff2') format('woff2'),
+		url("JetBrainsMono-Medium-Italic.woff") format("woff");
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Bold.woff2') format('woff2'),
+		url("JetBrainsMono-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('JetBrainsMono-Bold-Italic.woff2') format('woff2'),
+		url("JetBrainsMono-Bold-Italic.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Nimbus Roman';
+	font-display: swap;
+	src: url('NimbusRomNo9L-Med-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nimbus Roman';
+	font-display: swap;
+	src: url('NimbusRomNo9L-MedIta-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Nimbus Roman';
+	font-display: swap;
+	src: url('NimbusRomNo9L-RegIta-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Nimbus Roman';
+	font-display: swap;
+	src: url('NimbusRomNo9L-Reg-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'IBMPlex Sans';
+	font-display: swap;
+	src: url('IBMPlexSans-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'IBMPlex Sans';
+	font-display: swap;
+	src: url('IBMPlexSans-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'IBMPlex Sans';
+	font-display: swap;
+	src: url('IBMPlexSans-BoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'IBMPlex Sans';
+	font-display: swap;
+	src: url('IBMPlexSans-Italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}

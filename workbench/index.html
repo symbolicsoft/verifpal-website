@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height, target-densitydpi=device-dpi" />
+	<meta property="article:publisher" content="https://verifpal.com" />
+	<meta property="og:site_name" content="Verifpal" />
+	<meta property="og:type" content="profile" />
+	<meta property="og:locale" content="en_US" />
+	<meta name="author" content="Symbolic Software" />
+	<meta name="twitter:site" content="@verifpal" />
+	<meta name="twitter:creator" content="@symbolicsoft" />
+	<meta name="twitter:card" content="summary" />
+	<title>Verifpal: Workbench</title>
+	<meta property="og:title" content="Verifpal: Workbench" />
+	<meta name="twitter:text:title" content="Verifpal: Workbench" />
+	<meta name="description" content="Write and verify Verifpal cryptographic protocol models directly in your browser. Powered by WebAssembly." />
+	<meta property="og:description" content="Write and verify Verifpal cryptographic protocol models directly in your browser. Powered by WebAssembly." />
+	<meta name="keywords" content="verifpal, workbench, formal verification, protocol verification, webassembly, wasm" />
+	<meta property="og:image" content="https://verifpal.com/res/img/png/icon.png" />
+	<meta name="twitter:image" content="https://verifpal.com/res/img/png/icon.png" />
+	<meta name="og:image:width" content="512" />
+	<meta name="og:image:height" content="512" />
+	<meta property="og:url" content="https://verifpal.com/workbench" />
+	<meta name="theme-color" content="#7a8a35" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#7a8a35" />
+	<meta name="msapplication-TileColor" content="#7a8a35" />
+	<link rel="apple-touch-icon" href="https://verifpal.com/res/img/png/icon.png" />
+	<link rel="image_src" href="https://verifpal.com/res/img/png/icon.png" />
+	<link rel="icon" type="image/png" href="https://verifpal.com/res/img/png/icon.png" />
+	<link rel="stylesheet" type="text/css" href="/res/fonts/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/mobile.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/workbench.css" />
+	<script defer data-domain="verifpal.com" data-api="https://restless-block-0a1e.symbolicsoft.workers.dev/oil-ocean/event" src="https://restless-block-0a1e.symbolicsoft.workers.dev/emerald-hill/script.js"></script>
+</head>
+
+<body>
+	<nav class="topNav">
+		<a href="/" class="navLogo">
+			<img src="/res/img/png/icon.png" alt="" />
+			<span>Verifpal</span>
+		</a>
+		<div class="navLinks">
+			<a href="/">About</a>
+			<a href="/software">Software</a>
+			<a href="/events">Events</a>
+			<a href="/getinvolved">Community</a>
+			<a href="/workbench" class="active">Workbench</a>
+		</div>
+		<button class="navToggle" aria-label="Toggle menu">
+			<span></span><span></span><span></span>
+		</button>
+	</nav>
+	<main class="workbench">
+		<div class="workbenchToolbar">
+			<select id="exampleSelect">
+				<option value="">Load example...</option>
+				<option value="simple">Simple DH Exchange</option>
+				<option value="trivial">Trivial (Minimal)</option>
+				<option value="challenge-response">Challenge-Response</option>
+				<option value="signal">Signal (Simplified)</option>
+				<option value="needham-schroeder">Needham-Schroeder</option>
+				<option value="pke">Public Key Encryption</option>
+				<option value="signature">Digital Signature</option>
+				<option value="blind-signature">Blind Signature</option>
+				<option value="shamir">Shamir Secret Sharing</option>
+				<option value="saltchannel">Salt Channel</option>
+				<option value="double-ratchet">Double Ratchet</option>
+				<option value="ok">AEAD with DH</option>
+			</select>
+			<button id="verifyBtn" class="btn btnPrimary" disabled>Verify</button>
+			<button id="prettyBtn" class="btn btnSecondary" disabled>Pretty Print</button>
+			<button id="diagramBtn" class="btn btnSecondary" disabled>Diagram</button>
+			<a href="https://static.verifpal.com/manual.pdf" target="_blank" class="btn btnSecondary">Manual</a>
+			<span id="statusLabel" class="btnLabel">Loading...</span>
+		</div>
+		<div class="workbenchPanels">
+			<div class="workbenchEditor">
+				<div class="editorWrap">
+					<pre id="highlight" class="editorHighlight" aria-hidden="true"><code id="highlightCode"></code></pre>
+					<textarea id="editor" class="editorInput" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Write your Verifpal model here..."></textarea>
+				</div>
+			</div>
+			<div class="workbenchResults" id="results">
+				<div class="resultPlaceholder">Select an example or write a model, then click "Verify" to analyze it.</div>
+			</div>
+		</div>
+	</main>
+	<script src="/res/js/website.js"></script>
+	<script type="module" src="/res/js/workbench.js"></script>
+	<script>
+		init([navToggleLoad]);
+	</script>
+</body>
+
+</html>

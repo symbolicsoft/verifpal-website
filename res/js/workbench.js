@@ -1,7 +1,10 @@
 /* SPDX-FileCopyrightText: © 2019-2026 Nadim Kobeissi <nadim@symbolic.software>
  * SPDX-License-Identifier: GPL-3.0-only */
 
-import init, { wasm_verify, wasm_pretty } from "/res/wasm/verifpal.js";
+import init, {
+	wasm_verify,
+	wasm_pretty
+} from "/res/wasm/verifpal.js";
 
 // ── Examples ────────────────────────────────────────────────────────────────
 
@@ -602,7 +605,11 @@ function parseDiagramData(src) {
 
 	function flushPrincipalNote() {
 		if (currentPrincipal && currentExprs.length > 0) {
-			events.push({ type: "note", principal: currentPrincipal, lines: currentExprs });
+			events.push({
+				type: "note",
+				principal: currentPrincipal,
+				lines: currentExprs
+			});
 		}
 		currentPrincipal = null;
 		currentExprs = [];
@@ -662,7 +669,10 @@ function parseDiagramData(src) {
 				if (ch === "[") bracketDepth++;
 				if (ch === "]") bracketDepth--;
 			}
-			if (bracketDepth <= 0) { insideBlock = null; bracketDepth = 0; }
+			if (bracketDepth <= 0) {
+				insideBlock = null;
+				bracketDepth = 0;
+			}
 			continue;
 		}
 
@@ -674,7 +684,10 @@ function parseDiagramData(src) {
 				if (ch === "[") bracketDepth++;
 				if (ch === "]") bracketDepth--;
 			}
-			if (bracketDepth <= 0) { insideBlock = null; bracketDepth = 0; }
+			if (bracketDepth <= 0) {
+				insideBlock = null;
+				bracketDepth = 0;
+			}
 			continue;
 		}
 
@@ -682,16 +695,30 @@ function parseDiagramData(src) {
 		const msgMatch = line.match(/^([A-Za-z_]\w*)\s*->\s*([A-Za-z_]\w*)\s*:\s*(.+)$/);
 		if (msgMatch) {
 			const [, sender, recipient, constants] = msgMatch;
-			if (!principalSet.has(sender)) { principals.push(sender); principalSet.add(sender); }
-			if (!principalSet.has(recipient)) { principals.push(recipient); principalSet.add(recipient); }
-			events.push({ type: "message", sender, recipient, label: constants.trim() });
+			if (!principalSet.has(sender)) {
+				principals.push(sender);
+				principalSet.add(sender);
+			}
+			if (!principalSet.has(recipient)) {
+				principals.push(recipient);
+				principalSet.add(recipient);
+			}
+			events.push({
+				type: "message",
+				sender,
+				recipient,
+				label: constants.trim()
+			});
 			continue;
 		}
 
 		// Phase
 		const phaseMatch = line.match(/^phase\s*\[\s*(\d+)\s*\]/);
 		if (phaseMatch) {
-			events.push({ type: "phase", number: parseInt(phaseMatch[1]) });
+			events.push({
+				type: "phase",
+				number: parseInt(phaseMatch[1])
+			});
 			continue;
 		}
 
@@ -699,7 +726,10 @@ function parseDiagramData(src) {
 		const principalMatch = line.match(/^principal\s+([A-Za-z_]\w*)\s*\[/);
 		if (principalMatch) {
 			const name = principalMatch[1];
-			if (!principalSet.has(name)) { principals.push(name); principalSet.add(name); }
+			if (!principalSet.has(name)) {
+				principals.push(name);
+				principalSet.add(name);
+			}
 
 			// Count brackets on this line
 			bracketDepth = 0;
@@ -734,11 +764,17 @@ function parseDiagramData(src) {
 		}
 	}
 
-	return { principals, events };
+	return {
+		principals,
+		events
+	};
 }
 
 function renderDiagram(src) {
-	const { principals, events } = parseDiagramData(src);
+	const {
+		principals,
+		events
+	} = parseDiagramData(src);
 	if (principals.length === 0) return '<div class="resultPlaceholder">No principals found in model.</div>';
 
 	// Coordinate system: design at 2x, display at 1x via viewBox scaling
@@ -777,7 +813,8 @@ function renderDiagram(src) {
 		s += `<line class="lifeline" x1="${cx(j)}" y1="${PAD_T + HDR_H}" x2="${cx(j)}" y2="${vbH - 6}"/>`;
 
 	for (let j = 0; j < principals.length; j++) {
-		const x = cx(j), bw = Math.min(COL - 20, principals[j].length * 11 + 28);
+		const x = cx(j),
+			bw = Math.min(COL - 20, principals[j].length * 11 + 28);
 		s += `<rect class="principalBox" x="${x - bw / 2}" y="${PAD_T}" width="${bw}" height="${HDR_H - 4}"/>`;
 		s += `<text class="principalLabel" x="${x}" y="${PAD_T + HDR_H / 2}" text-anchor="middle" dominant-baseline="middle">${escSvg(principals[j])}</text>`;
 	}
@@ -785,9 +822,16 @@ function renderDiagram(src) {
 	let y = PAD_T + HDR_H + 14;
 	for (const ev of events) {
 		if (ev.type === "message") {
-			const si = principals.indexOf(ev.sender), ri = principals.indexOf(ev.recipient);
-			if (si < 0 || ri < 0) { y += MSG_H; continue; }
-			const x1 = cx(si), x2 = cx(ri), dx = x2 - x1, ad = Math.abs(dx);
+			const si = principals.indexOf(ev.sender),
+				ri = principals.indexOf(ev.recipient);
+			if (si < 0 || ri < 0) {
+				y += MSG_H;
+				continue;
+			}
+			const x1 = cx(si),
+				x2 = cx(ri),
+				dx = x2 - x1,
+				ad = Math.abs(dx);
 			const r = ad > 0 ? 3 / ad : 0;
 			y += MSG_LABEL_H;
 			const mc = Math.max(Math.floor(ad / CW) - 2, 8);
@@ -811,7 +855,8 @@ function renderDiagram(src) {
 			}
 			y += nh + NGAP;
 		} else if (ev.type === "phase") {
-			const px1 = cx(0) - COL / 2 + 8, px2 = cx(principals.length - 1) + COL / 2 - 8;
+			const px1 = cx(0) - COL / 2 + 8,
+				px2 = cx(principals.length - 1) + COL / 2 - 8;
 			s += `<line class="phaseLine" x1="${px1}" y1="${y}" x2="${px2}" y2="${y}"/>`;
 			s += `<text class="phaseLabel" x="${px1 + 4}" y="${y - 5}">phase[${ev.number}]</text>`;
 			y += PH_H;

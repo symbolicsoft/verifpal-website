@@ -130,16 +130,49 @@
 }
 
 /* Verifpal syntax colors */
-.vp-keyword   { color: #555f25; font-weight: bold; }
-.vp-literal   { color: #78A960; }
-.vp-builtin   { color: #397300; }
-.vp-comment   { color: #8a8a82; font-style: italic; }
-.vp-arrow     { color: #b08030; font-weight: bold; }
-.vp-principal { color: #4b6ec4; }
-.vp-guard     { color: #9b59b6; }
-.vp-operator  { color: #b08030; }
-.vp-query     { color: #c0392b; }
-.vp-phase     { color: #c0392b; font-weight: bold; }
+.vp-keyword {
+	color: #555f25;
+	font-weight: bold;
+}
+
+.vp-literal {
+	color: #78A960;
+}
+
+.vp-builtin {
+	color: #397300;
+}
+
+.vp-comment {
+	color: #8a8a82;
+	font-style: italic;
+}
+
+.vp-arrow {
+	color: #b08030;
+	font-weight: bold;
+}
+
+.vp-principal {
+	color: #4b6ec4;
+}
+
+.vp-guard {
+	color: #9b59b6;
+}
+
+.vp-operator {
+	color: #b08030;
+}
+
+.vp-query {
+	color: #c0392b;
+}
+
+.vp-phase {
+	color: #c0392b;
+	font-weight: bold;
+}
 
 /* ===========================
    Results Panel
@@ -193,8 +226,13 @@
 	margin-left: 12px;
 }
 
-.resultQuery .queryStatus.pass { color: var(--accent); }
-.resultQuery .queryStatus.fail { color: var(--red); }
+.resultQuery .queryStatus.pass {
+	color: var(--accent);
+}
+
+.resultQuery .queryStatus.fail {
+	color: var(--red);
+}
 
 .resultQuery .querySummary {
 	font-family: 'JetBrains Mono', monospace;
@@ -214,8 +252,13 @@
 	border-top: 1px solid var(--border);
 }
 
-.resultSummary.allPass { color: var(--accent); }
-.resultSummary.hasFail { color: var(--red); }
+.resultSummary.allPass {
+	color: var(--accent);
+}
+
+.resultSummary.hasFail {
+	color: var(--red);
+}
 
 .resultMessages {
 	margin-top: 16px;
